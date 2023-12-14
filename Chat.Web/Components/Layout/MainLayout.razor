@@ -1,18 +1,64 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+        <nav class="navbar bg-white bg-opacity-25">
+            <div class="container-fluid container navbar-positon">
+                <a class="navbar-brand" href="#">
+                    SignalR
+                </a>
+                <div>
+                    <a class="navbar-brand" href="#">
+                        Bosh sahifa
+                    </a>
+                    <a class="navbar-brand" href="/chat">
+                        Chat
+                    </a>
+                    <a class="navbar-brand" href="/map">
+                        Xarita
+                    </a>
+                </div>
 
-        <article class="content px-4">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><button class="dropdown-item" type="button">Sardor Sohinazarov</button></li>
+                        <hr class="m-0" />
+                        <li>
+                            <div class="form-check form-switch mx-2">
+                                <label>Tungi rejim</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            </div>
+                        </li>
+                        <hr class="m-0" />
+                        <li>
+                            <button class="dropdown-item" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5" />
+                                </svg>
+                                Chiqish
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <hr class="m-0" />
+
+        <article class="content px-4 container">
             @Body
         </article>
+
+        <footer>
+            <p class="text-center">
+                &copy; Sardor Sohinazarov
+            </p>
+        </footer>
     </main>
 </div>
 
@@ -21,3 +67,12 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+<style>
+    /* main {
+        background-image: url("https://dotnet.microsoft.com/static/images/illustrations/swimlane-chat-app-multiplatform.svg");
+        background-attachment: fixed;
+        position: relative;
+        height: 100%;
+    } */
+</style>

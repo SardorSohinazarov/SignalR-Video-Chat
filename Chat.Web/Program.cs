@@ -1,4 +1,4 @@
-using Chat.Web.Components;
+    using Chat.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
