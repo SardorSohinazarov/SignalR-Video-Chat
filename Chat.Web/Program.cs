@@ -1,4 +1,5 @@
-    using Chat.Web.Components;
+using Chat.Web;
+using Chat.Web.Components;
 using Chat.Web.Hubs;
 using Microsoft.AspNetCore.ResponseCompression;
 

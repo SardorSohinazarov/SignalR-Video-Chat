@@ -20,7 +20,7 @@
 </div>
 <div class="form-group">
     <label>
-        Message:
+        Chat Id:
         <input @bind="touserInput" size="50" />
     </label>
 </div>
@@ -37,8 +37,9 @@
 </ul>
 
 @code {
-    private HubConnection? hubConnection;
     private List<string> messages = new List<string>();
+
+    private HubConnection? hubConnection;
     private string? userInput;
     private string? touserInput;
     private string? messageInput;
@@ -49,7 +50,16 @@
             .WithUrl(Navigation.ToAbsoluteUri("/chathub"))
             .Build();
 
-        hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+        hubConnection.On<string, string, string>(nameof(ReceiveMessage), ReceiveMessage);
+
+        hubConnection.On<string, string>("ReceiveMessageFromUser", (user, message) =>
+        {
+            var encodedMsg = $"{user}: {message}";
+            messages.Add(encodedMsg);
+            InvokeAsync(StateHasChanged);
+        });
+        
+        hubConnection.On<string, string>("ReceiveMessageFromGroup", (user, message) =>
         {
             var encodedMsg = $"{user}: {message}";
             messages.Add(encodedMsg);
@@ -57,6 +67,13 @@
         });
 
         await hubConnection.StartAsync();
+    }
+
+    private void ReceiveMessage(string user, string connectionId, string message)
+    {
+        var encodedMsg = $"{user} ({connectionId}): {message}";
+        messages.Add(encodedMsg);
+        InvokeAsync(StateHasChanged);
     }
 
     private async Task SendToAll()
