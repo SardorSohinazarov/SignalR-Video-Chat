@@ -79,17 +79,13 @@
     private async Task SendToAll()
     {
         if (hubConnection is not null)
-        {
             await hubConnection.SendAsync("SendToAllMessage", userInput, messageInput);
-        }
     }
     
     private async Task SendToUser()
     {
         if (hubConnection is not null)
-        {
             await hubConnection.SendAsync("SendToUserMessage",touserInput, userInput, messageInput);
-        }
     }
 
     public bool IsConnected =>
