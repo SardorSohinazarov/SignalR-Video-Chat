@@ -1,4 +1,4 @@
-﻿using Chat.API.Entities;
+﻿using Chat.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chat.API.Controllers
@@ -16,13 +16,31 @@ namespace Chat.API.Controllers
                 new Account()
                 {
                     Id = 1,
-                    Name = "Account1",
+                    FirstName = "Sardor",
+                    LastName = "Sohinazarov",
+                    PasswordHash = Guid.NewGuid().ToString(),
+                    RefreshToken = Guid.NewGuid().ToString(),
+                    ExpireDate = DateTime.Now,
                     CreatedAt = DateTime.Now,
                 },
                 new Account()
                 {
                     Id = 2,
-                    Name = "Account2",
+                    FirstName = "Sarvar",
+                    LastName = "Sohinazarov",
+                    PasswordHash = Guid.NewGuid().ToString(),
+                    RefreshToken = Guid.NewGuid().ToString(),
+                    ExpireDate = DateTime.Now,
+                    CreatedAt = DateTime.Now,
+                },
+                new Account()
+                {
+                    Id = 3,
+                    FirstName = "Sanjar",
+                    LastName = "Sohinazarov",
+                    PasswordHash = Guid.NewGuid().ToString(),
+                    RefreshToken = Guid.NewGuid().ToString(),
+                    ExpireDate = DateTime.Now,
                     CreatedAt = DateTime.Now,
                 },
             });

@@ -1,4 +1,4 @@
-﻿using Chat.API.Entities;
+﻿using Chat.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chat.API.Controllers
