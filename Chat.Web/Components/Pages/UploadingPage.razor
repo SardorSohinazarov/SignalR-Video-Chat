@@ -1,0 +1,49 @@
+﻿@* @page "/upload"
+
+@using Microsoft.AspNetCore.SignalR.Client
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.SignalR.Client
+@inject NavigationManager Navigation
+@implements IAsyncDisposable
+
+
+<h3>UploadingPage</h3>
+
+<div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupFile01">Upload</label>
+    <input type="file" class="form-control" id="inputGroupFile01">
+</div>
+
+<button @onclick="UploadStream" disabled="@(!IsConnected)">Send To All</button>
+
+
+
+@code {
+    public HubConnection hubConnection; 
+
+     protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(Navigation.ToAbsoluteUri("/chathub"))
+            .Build();
+
+        await hubConnection.StartAsync();
+    }
+
+
+    public async Task UploadStream(ChannelReader<string> stream)
+    {
+        while (await stream.WaitToReadAsync())
+        {
+            while (stream.TryRead(out var item))
+            {
+                // do something with the stream item
+                Console.WriteLine(item);
+            }
+        }
+    }
+
+    public bool IsConnected =>
+        hubConnection?.State == HubConnectionState.Connected;
+}
+ *@
